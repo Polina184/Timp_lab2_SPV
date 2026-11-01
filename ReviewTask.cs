@@ -9,8 +9,8 @@ public static class ReviewTask
         int total = 0;
         foreach (int used in attempts)
         {
-            int left = 3 - used;
-            total = left;
+            int remaining = Math.Max(0, limit - used);
+            total += remaining;
         }
         return total;
     }

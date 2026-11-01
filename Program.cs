@@ -13,6 +13,18 @@ class Program
         Check("T03", () => Run(new[] { 9 }, 3), "0");
         Check("T04", () => Run(new[] { 1, 1 }, 3), "4");
         Check("T05", () => Run(Array.Empty<int>(), 3), "0");
+
+        // Собственные тесты
+        Check("U01", () => Run(new[] { 2, 0, 5 }, 4), "6");
+        Check("U02", () => Run(new[] { 3, 2 }, 3), "1");
+        Check("U03", () => Run(new[] { 0, 2 }, 0), "0");
+        Check("U04", () =>
+        {
+            int[] sample = { 0, 2, 7 };
+            int first = Run(sample, 3);
+            int second = Run(sample, 3);
+            return first + "|" + string.Join(",", sample) + "|" + second;
+        }, "4|0,2,7|4");
         Console.WriteLine("Failed: " + failed);
         Environment.ExitCode = failed == 0 ? 0 : 1;
     }
